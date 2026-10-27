@@ -25,10 +25,10 @@ def category_fruits() -> Category:
     return Category("fruits", "fresh fruits", ["apple", "banana", "cherry"])
 
 
-@pytest.fixture(autouse=True)
-def reset_counters() -> None:
-    Category.category_count = 0
-    Category.product_count = 0
+# @pytest.fixture(autouse=True)
+# def reset_counters() -> None:
+#     Category.category_count = 0
+#     Category.product_count = 0
 
 
 def test_category_init_success(category_fruits) -> None:
