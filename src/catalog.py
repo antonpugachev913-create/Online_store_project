@@ -1,16 +1,38 @@
+from typing import Any
+
+
 class Product:
     """Класс для представления продукта"""
 
     name: str
     description: str
-    price: int
+    __price: int
     quantity: int
 
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
+
+    @classmethod
+    def new_product(cls, product: dict[str, Any]) -> "Product":
+        # name = product['name']
+        # description = product['description']
+        # price = product['price']
+        # quantity = product['quantity']
+        return cls(**product)
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, new_price):
+        if new_price <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+        else:
+            self.__price = new_price
 
 
 class Category:
@@ -34,17 +56,18 @@ class Category:
         Category.product_count += 1
 
     @property
-    def products(self) -> list:
-        return self.__products
-
-    @property
-    def get_list_products(self) -> list[Product]:
+    def products(self) -> str:
         list_products = self.__products
-        string_products = []
+        new_list_products = []
         for product in list_products:
             name = product.name
             price = product.price
             rest = product.quantity
-            ans = f'{name}, {price}. Остаток: {rest} шт.'
-            string_products.append(ans)
-        return 0
+            product_string = f"{name}, {price}. Остаток: {rest} шт.\n"
+            new_list_products.append(product_string)
+        string_products = "".join(new_list_products)
+        return string_products
+
+    # @property
+    # def get_list_products(self) -> list[str]:
+    #     return self.__products
