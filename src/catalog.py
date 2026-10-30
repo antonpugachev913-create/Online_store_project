@@ -63,7 +63,7 @@ class Category:
             name = product.name
             price = product.price
             rest = product.quantity
-            product_string = f"{name}, {price}. Остаток: {rest} шт.\n"
+            product_string = f"{name}, {price} руб. Остаток: {rest} шт.\n"
             new_list_products.append(product_string)
         string_products = "".join(new_list_products)
         return string_products

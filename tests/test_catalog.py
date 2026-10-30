@@ -66,9 +66,9 @@ def test_category_private_work_success(category_fruits) -> None:
 
 def test_category_output_products(category_fruits) -> None:
     list_products = category_fruits.products.splitlines()
-    assert list_products[0] == "apple, 20. Остаток: 100 шт."
-    assert list_products[1] == "banana, 30. Остаток: 50 шт."
-    assert list_products[2] == "cherry, 100. Остаток: 250 шт."
+    assert list_products[0] == "apple, 20 руб. Остаток: 100 шт."
+    assert list_products[1] == "banana, 30 руб. Остаток: 50 шт."
+    assert list_products[2] == "cherry, 100 руб. Остаток: 250 шт."
 
 
 def test_category_raise_products_error() -> None:
