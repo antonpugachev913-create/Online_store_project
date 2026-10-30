@@ -50,7 +50,13 @@ poetry run mypy .
 #### Примеры использования catalog.py (каталога магазина)
 ```python
 from src.catalog import Product, Category
+#Инициализируем классы
 product_1 = Product("apple", "sweet fruit", 500, 10) # создаем объект класса Product
 category_1 = Category("fruits", "fresh fruits", ["apple", "banana", "cherry"]) # создаем объект класса Category
+
+
+#Получение данных класса
+product_1.price = 100 # устанавливаем новую цену для продукта
+products = category_1.products #получаем список товаров в виде единой строки
 ```
 
