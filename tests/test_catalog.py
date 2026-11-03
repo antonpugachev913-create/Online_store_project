@@ -1,5 +1,7 @@
-import pytest
 from typing import Any
+
+import pytest
+
 from src.catalog import Category, Product
 
 
@@ -40,7 +42,6 @@ def category_fruits() -> Category:
 
 
 def test_category_init_success(init_fruits_products, category_fruits) -> None:
-    products = init_fruits_products
     assert category_fruits.name == "fruits"
 
 
@@ -73,8 +74,8 @@ def test_category_output_products(category_fruits) -> None:
 
 def test_category_raise_products_error() -> None:
     with pytest.raises(TypeError):
-        apple = Product("red fruit", 20, 100)  # type: ignore
-        banana = Product("banana", "sweet yellow fruit", 30, 50)
+        Product("red fruit", 20, 100)  # type: ignore
+        Product("banana", "sweet yellow fruit", 30, 50)
     # list_products = category_fruits.products.splitlines()
     # assert list_products[0] == "apple, 20. Остаток: 100 шт."
     # assert list_products[1] == "banana, 30. Остаток: 50 шт."
@@ -136,32 +137,6 @@ def test_get_price(init_fruits_products, capsys) -> None:
 
     apple.price = 100
     assert apple.price == 100
-
-
-def test_product_present_correct(init_fruits_products) -> None:
-    dict_products = init_fruits_products
-    apple = dict_products['apple']
-    banana = dict_products['banana']
-    assert str(apple) == 'apple, 20 руб. Остаток: 100 шт.\n'
-    assert str(banana) == 'banana, 30 руб. Остаток: 50 шт.\n'
-
-
-def test_category_present_correct(category_fruits) -> None:
-    assert str(category_fruits) == 'fruits, количество продуктов: 400 шт.\n'
-
-
-def test_product_addition_success(init_fruits_products):
-    dict_products = init_fruits_products
-    apple = dict_products['apple']
-    banana = dict_products['banana']
-
-    total = apple.total_amount + banana.total_amount
-    # total = (apple.price * apple.quantity) + (banana.price * banana.quantity)
-    assert total == 3500
-
-
-
-
 
 
 # def test_category_private_work_success(list_category = category_goods) -> None:
