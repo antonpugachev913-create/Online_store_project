@@ -138,6 +138,31 @@ def test_get_price(init_fruits_products, capsys) -> None:
     assert apple.price == 100
 
 
+def test_product_present_correct(init_fruits_products) -> None:
+    dict_products = init_fruits_products
+    apple = dict_products['apple']
+    banana = dict_products['banana']
+    assert str(apple) == 'apple, 20 руб. Остаток: 100 шт.\n'
+    assert str(banana) == 'banana, 30 руб. Остаток: 50 шт.\n'
+
+
+def test_category_present_correct(category_fruits) -> None:
+    assert str(category_fruits) == 'fruits, количество продуктов: 400 шт.\n'
+
+
+def test_product_addition_success(init_fruits_products):
+    dict_products = init_fruits_products
+    apple = dict_products['apple']
+    banana = dict_products['banana']
+
+    total = apple.total_amount + banana.total_amount
+    # total = (apple.price * apple.quantity) + (banana.price * banana.quantity)
+    assert total == 3500
+
+
+
+
+
 
 # def test_category_private_work_success(list_category = category_goods) -> None:
 #     product = Product('ASUS', 'Powerful tv', 50_000, 100)

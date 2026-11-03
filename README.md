@@ -52,11 +52,16 @@ poetry run mypy .
 from src.catalog import Product, Category
 #Инициализируем классы
 product_1 = Product("apple", "sweet fruit", 500, 10) # создаем объект класса Product
+product_2 = Product("banana", "sweet yellow fruit", 30, 50)
 category_1 = Category("fruits", "fresh fruits", ["apple", "banana", "cherry"]) # создаем объект класса Category
 
 
 #Получение данных класса
 product_1.price = 100 # устанавливаем новую цену для продукта
 products = category_1.products #получаем список товаров в виде единой строки
+
+total_amount = product_1.total_amount + product_2.total_amount # вычисляем общую сумму произведений цены на количество у двух объектов.
+
+print(repr(product_1)) # получаем отладочный вывод для инициализации объекта класса Product
 ```
 
