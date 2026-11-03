@@ -19,6 +19,11 @@ class Product:
     def __repr__(self) -> str:
         return f'Product(name={self.name}, description={self.description}, price={self.__price}, quantity={self.quantity})\n'
 
+
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n"
+
+
     @classmethod
     def new_product(cls, product: dict[str, Any]) -> "Product":
         # name = product['name']
@@ -37,6 +42,15 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = new_price
+
+    @property
+    def total_amount(self):
+        total_amount = self.price * self.quantity
+        return total_amount
+
+    def __add__(self, other):
+        # return (self.price * self.quantity) + (other.price * other.quantity)
+        return self.total_amount + other.total_amount
 
 
 class Category:
@@ -59,6 +73,11 @@ class Category:
     def __repr__(self) -> str:
         return f'Category(name={self.name}, description={self.description}, products={self.__products})\n'
 
+
+    def __str__(self):
+        quantity_products = sum(cnt.quantity for cnt in self.get_list_products)
+        return f"{self.name}, количество продуктов: {quantity_products} шт.\n"
+
     def add_product(self, product):
         self.__products.append(product)
         Category.product_count += 1
@@ -68,10 +87,7 @@ class Category:
         list_products = self.__products
         new_list_products = []
         for product in list_products:
-            name = product.name
-            price = product.price
-            rest = product.quantity
-            product_string = f"{name}, {price} руб. Остаток: {rest} шт.\n"
+            product_string = str(product)
             new_list_products.append(product_string)
         string_products = "".join(new_list_products)
         return string_products
@@ -79,3 +95,19 @@ class Category:
     @property
     def get_list_products(self) -> list[str]:
         return self.__products
+
+    def __len__(self):
+        return len(self.__products)
+
+
+apple = Product("apple", "red fruit", 20, 100)
+banana = Product("banana", "sweet yellow fruit", 30, 50)
+cherry = Product("cherry", "purple berry", 100, 250)
+c = Category("fruits", "fresh fruits", [apple, banana, cherry])
+
+print(c)
+# product_1 = Product("apple", "red fruit", 20, 100)
+# print(product_1)
+# print(str(product_1))
+# product_2 = banana = Product("banana", "sweet yellow fruit", 30, 50)
+# print(product_2)
