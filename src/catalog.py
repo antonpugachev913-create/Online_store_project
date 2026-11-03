@@ -15,9 +15,8 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-
     def __repr__(self) -> str:
-        return f'Product(name={self.name}, description={self.description}, price={self.__price}, quantity={self.quantity})\n'
+        return f"Product(name={self.name}, description={self.description}, price={self.__price}, quantity={self.quantity})\n"
 
     @classmethod
     def new_product(cls, product: dict[str, Any]) -> "Product":
@@ -55,9 +54,8 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-
     def __repr__(self) -> str:
-        return f'Category(name={self.name}, description={self.description}, products={self.__products})\n'
+        return f"Category(name={self.name}, description={self.description}, products={self.__products})\n"
 
     def add_product(self, product):
         self.__products.append(product)
