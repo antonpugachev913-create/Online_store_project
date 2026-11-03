@@ -98,16 +98,3 @@ class Category:
 
     def __len__(self):
         return len(self.__products)
-
-
-apple = Product("apple", "red fruit", 20, 100)
-banana = Product("banana", "sweet yellow fruit", 30, 50)
-cherry = Product("cherry", "purple berry", 100, 250)
-c = Category("fruits", "fresh fruits", [apple, banana, cherry])
-
-print(c)
-# product_1 = Product("apple", "red fruit", 20, 100)
-# print(product_1)
-# print(str(product_1))
-# product_2 = banana = Product("banana", "sweet yellow fruit", 30, 50)
-# print(product_2)
