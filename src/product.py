@@ -18,10 +18,8 @@ class Product:
     def __repr__(self) -> str:
         return f"Product(name={self.name}, description={self.description}, price={self.__price}, quantity={self.quantity})\n"
 
-
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n"
-
 
     @classmethod
     def new_product(cls, product: dict[str, Any]) -> "Product":
@@ -50,49 +48,3 @@ class Product:
     def __add__(self, other):
         # return (self.price * self.quantity) + (other.price * other.quantity)
         return self.total_amount + other.total_amount
-
-
-class Category:
-    """Класс для представления категории"""
-
-    name: str
-    description: str
-    __products: list
-    category_count = 0
-    product_count = 0
-
-    def __init__(self, name, description, products):
-        self.name = name
-        self.description = description
-        self.__products = products
-        Category.category_count += 1
-        Category.product_count += len(products)
-
-    def __repr__(self) -> str:
-        return f"Category(name={self.name}, description={self.description}, products={self.__products})\n"
-
-
-    def __str__(self):
-        quantity_products = sum(cnt.quantity for cnt in self.get_list_products)
-        return f"{self.name}, количество продуктов: {quantity_products} шт.\n"
-
-    def add_product(self, product):
-        self.__products.append(product)
-        Category.product_count += 1
-
-    @property
-    def products(self) -> str:
-        list_products = self.__products
-        new_list_products = []
-        for product in list_products:
-            product_string = str(product)
-            new_list_products.append(product_string)
-        string_products = "".join(new_list_products)
-        return string_products
-
-    @property
-    def get_list_products(self) -> list[str]:
-        return self.__products
-
-    def __len__(self):
-        return len(self.__products)
