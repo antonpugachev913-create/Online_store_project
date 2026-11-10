@@ -1,3 +1,7 @@
+from src.product import Product
+from src.smartphone import Smartphone
+from src.grass import Grass
+
 class Category:
     """Класс для представления категории"""
 
@@ -22,8 +26,11 @@ class Category:
         return f"{self.name}, количество продуктов: {quantity_products} шт.\n"
 
     def add_product(self, product):
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            print('Продукта нет в списке допустимых категорий!')
 
     @property
     def products(self) -> str:
