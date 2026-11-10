@@ -1,6 +1,8 @@
-import pytest
-from src.product import Product
 from typing import Any
+
+import pytest
+
+from src.product import Product
 
 
 def test_product_init_success(init_fruits_products) -> None:
@@ -71,3 +73,30 @@ def test_get_price(init_fruits_products, capsys) -> None:
 
     apple.price = 100
     assert apple.price == 100
+
+
+def test_add_same_class_success(init_grass_dict, init_smartphone_dict) -> None:
+    emerald_grass = init_grass_dict["emerald_grass"]
+    shadow_grass = init_grass_dict["shadow_grass"]
+    total_grasses = emerald_grass + shadow_grass
+
+    assert total_grasses == 279_000
+
+    iphone = init_smartphone_dict["iphone"]
+    poco = init_smartphone_dict["poco"]
+    total_smartphones = iphone + poco
+
+    assert total_smartphones == 85_000_000
+
+
+def test_add_same_class_raise_error(init_grass_dict, init_smartphone_dict) -> None:
+    emerald_grass = init_grass_dict["emerald_grass"]
+    shadow_grass = init_grass_dict["shadow_grass"]
+
+    iphone = init_smartphone_dict["iphone"]
+    poco = init_smartphone_dict["poco"]
+
+    with pytest.raises(TypeError):
+        _ = shadow_grass + poco
+    with pytest.raises(TypeError):
+        _ = emerald_grass + iphone
