@@ -29,6 +29,13 @@ def test_category_private_work_success(category_fruits) -> None:
     category_fruits.add_product(product_2)
     assert Category.product_count == 5
 
+def test_category_add_object_print_warning(category_fruits, capsys) -> None:
+    bad_product = 'HagiVagi'
+    category_fruits.add_product(bad_product)
+    output = capsys.readouterr()
+    captured = output.out.strip()
+
+    assert captured == 'Продукта нет в списке допустимых категорий!'
 
 def test_category_output_products(category_fruits) -> None:
     list_products = category_fruits.products.splitlines()
