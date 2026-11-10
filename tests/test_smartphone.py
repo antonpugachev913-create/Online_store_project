@@ -1,23 +1,4 @@
 import pytest
-from src.smartphone import Smartphone
-
-
-@pytest.fixture
-def init_smartphone_dict() -> dict[str, Smartphone]:
-    iphone = Smartphone(
-        "Blue iphone", "Powerful phone", 100_000, 250, 150, "Iphone 18", "32 Гб", "Blue"
-    )
-    poco = Smartphone(
-        "Poco X6 black",
-        "Big smartphone",
-        60_000,
-        1000,
-        100,
-        "Poco X6",
-        "16 Гб",
-        "Black",
-    )
-    return {"poco": poco, "iphone": iphone}
 
 
 def test_init_smartphone_success(init_smartphone_dict) -> None:

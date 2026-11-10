@@ -1,7 +1,9 @@
+from typing import Any
+
 import pytest
+
 from src.category import Category
 from src.product import Product
-from typing import Any
 
 
 def test_category_init_success(init_fruits_products, category_fruits) -> None:

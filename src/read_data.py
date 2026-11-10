@@ -1,7 +1,8 @@
 import json
 import pathlib
 
-from src.catalog import Category, Product
+from src.category import Category
+from src.product import Product
 
 
 def get_roof():
