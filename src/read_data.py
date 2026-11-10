@@ -20,6 +20,7 @@ file_path = project_roof / "data" / "products.json"
 
 
 def read_data_file(path=file_path):
+    """Функция, считывающая данные о категории товаров из json file и создающая класс Category"""
     with open(path, "r", encoding="utf-8") as file:
         catalog = json.load(file)
     categories = []
