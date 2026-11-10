@@ -1,6 +1,5 @@
 from src.product import Product
-from src.smartphone import Smartphone
-from src.grass import Grass
+
 
 class Category:
     """Класс для представления категории"""
@@ -30,7 +29,7 @@ class Category:
             self.__products.append(product)
             Category.product_count += 1
         else:
-            print('Продукта нет в списке допустимых категорий!')
+            print("Продукта нет в списке допустимых категорий!")
 
     @property
     def products(self) -> str:
