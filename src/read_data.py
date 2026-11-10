@@ -19,7 +19,7 @@ project_roof = get_root()
 file_path = project_roof / "data" / "products.json"
 
 
-def read_data_file(path=file_path):
+def read_data_file(path=file_path) -> list[Category]:
     """Функция, считывающая данные о категории товаров из json file и создающая класс Category"""
     with open(path, "r", encoding="utf-8") as file:
         catalog = json.load(file)
@@ -36,6 +36,5 @@ def read_data_file(path=file_path):
         inited_category = Category(name, description, list_products)
         categories.append(inited_category)
     return categories
-
 
 # pprint(read_data_file(), indent=4)

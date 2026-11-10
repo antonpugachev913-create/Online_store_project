@@ -122,3 +122,11 @@ emerald_grass = Grass(
 total_grasses = emerald_grass + shadow_grass
 total_smartphones = iphone + poco
 ```
+
+#### Пример использования read_data.py
+```python
+from src.read_data import read_data_file
+
+#Считываем данные и создаём список категорий на их основе
+categories = read_data_file()
+```
