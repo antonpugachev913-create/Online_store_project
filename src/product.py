@@ -46,5 +46,7 @@ class Product:
         return total_amount
 
     def __add__(self, other):
-        # return (self.price * self.quantity) + (other.price * other.quantity)
-        return self.total_amount + other.total_amount
+        if type(self) is type(other):
+            return self.total_amount + other.total_amount
+        else:
+            raise TypeError
