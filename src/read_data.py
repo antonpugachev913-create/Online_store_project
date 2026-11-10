@@ -1,11 +1,13 @@
 import json
 import pathlib
 
+# from pprint import pprint
+
 from src.category import Category
 from src.product import Product
 
 
-def get_roof():
+def get_root():
     loger_script = pathlib.Path(__file__).resolve()
     project_root = next(
         p for p in loger_script.parents if p.name == "Online_store_project"
@@ -13,7 +15,7 @@ def get_roof():
     return project_root
 
 
-project_roof = get_roof()
+project_roof = get_root()
 file_path = project_roof / "data" / "products.json"
 
 
