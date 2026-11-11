@@ -140,16 +140,16 @@ categories = read_data_file()
 ```python
 from src.base_product import BaseProduct
 
-#Создаём класс на основе BaseProduct
+# Создаём класс на основе BaseProduct
 
 class Car(BaseProduct):
     brand: str
     year: int
 
    #Если мы не укажем dunder метод __init__ программа упадёт с ошибкой
-   def __init__(self, brand, year):
-      self.brand = brand
-      self.year = year
+    def __init__(self, brand, year):
+        self.brand = brand
+        self.year = year
 
 ```
 
@@ -162,7 +162,7 @@ from src.product import Product
 # Создаём объекта класс Product и получаем дебажный вывод
 car = Product('Kia', 'Red car', 1000000, 200)
 
-# Вывод: Product('Kia, 'Red car', 1000000, 200)
+# Вывод: Product('Kia', 'Red car', 1000000, 200)
 
 # Миксин автоматически работает и для всех классов-наследников
 phone = Smartphone('Poco X6', 'Big smartphone', 60000, 1000, 100, 'X6', '16 Гб', 'Black')
