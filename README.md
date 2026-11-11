@@ -4,7 +4,7 @@ Online_store_project - это проект-ядро для онлайн мага
 ООП.
 
 ## Установка
-#### Склонируйте репозиторий:
+#### Клонируйте репозиторий:
 ```bash
 git clone https://github.com/antonpugachev913-create/Online_store_project
 ```
@@ -45,11 +45,23 @@ poetry run mypy .
 
 ## Документация
 #### В пакете src содержатся модули:
-```catalog.py``` - содержит классы для каталога магазина
+```category.py``` - содержит класс для категорий магазина
 
-#### Примеры использования catalog.py (каталога магазина)
+```product.py``` - содержит класс для представления продуктов магазина
+
+```grass.py``` - содержит дочерний класс Product для представления товаров газона
+
+```smartphone.py``` - содержит дочерний класс Product для представления телефонов
+
+```read_data.py``` - содержит функцию, считывающую данные о категории из json file и создающая класс Category
+
+
+
+#### Примеры использования category.py and product.py (каталога магазина)
 ```python
-from src.catalog import Product, Category
+from src.product import Product
+from src.category import Category
+
 #Инициализируем классы
 product_1 = Product("apple", "sweet fruit", 500, 10) # создаем объект класса Product
 product_2 = Product("banana", "sweet yellow fruit", 30, 50)
@@ -65,3 +77,56 @@ total_amount = product_1.total_amount + product_2.total_amount # вычисля�
 print(repr(product_1)) # получаем отладочный вывод для инициализации объекта класса Product
 ```
 
+
+#### Примеры использования grass.py and smartphone.py:
+```python
+from src.grass import Grass
+from src.smartphone import Smartphone
+
+#Инициализация экземпляров классов
+iphone = Smartphone(
+    "Blue iphone",
+    "Powerful phone",
+    100_000,
+    250,
+    150,
+    "Iphone 18",
+    "32 Гб",
+    "Blue")
+poco = Smartphone(
+        "Poco X6 black",
+        "Big smartphone",
+        60_000,
+        1000,
+        100,
+        "Poco X6",
+        "16 Гб",
+        "Black",
+    )
+
+shadow_grass = Grass(
+        "Луговой бархат",
+        "Травосмесь для затененных участков и парковых зон",
+        1800,
+        30,
+        "Russia",
+        21,
+        "Light green",
+    )
+
+emerald_grass = Grass(
+        "emerald_grass", "green grass", 1500, 150, "Germany", 14, "Dark green"
+    )
+
+#Вычисляем сумму товаров одной категории (Можем складывать только те товары, которые относят к 1 категории)
+total_grasses = emerald_grass + shadow_grass
+total_smartphones = iphone + poco
+```
+
+#### Пример использования read_data.py
+```python
+from src.read_data import read_data_file
+
+#Считываем данные и создаём список категорий на их основе
+categories = read_data_file()
+```

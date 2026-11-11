@@ -1,10 +1,13 @@
 import json
 import pathlib
 
-from src.catalog import Category, Product
+# from pprint import pprint
+
+from src.category import Category
+from src.product import Product
 
 
-def get_roof():
+def get_root():
     loger_script = pathlib.Path(__file__).resolve()
     project_root = next(
         p for p in loger_script.parents if p.name == "Online_store_project"
@@ -12,11 +15,12 @@ def get_roof():
     return project_root
 
 
-project_roof = get_roof()
+project_roof = get_root()
 file_path = project_roof / "data" / "products.json"
 
 
-def read_data_file(path=file_path):
+def read_data_file(path=file_path) -> list[Category]:
+    """Функция, считывающая данные о категории товаров из json file и создающая класс Category"""
     with open(path, "r", encoding="utf-8") as file:
         catalog = json.load(file)
     categories = []
@@ -32,6 +36,5 @@ def read_data_file(path=file_path):
         inited_category = Category(name, description, list_products)
         categories.append(inited_category)
     return categories
-
 
 # pprint(read_data_file(), indent=4)
