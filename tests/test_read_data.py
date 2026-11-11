@@ -1,4 +1,5 @@
 import pytest
+
 from src.category import Category
 from src.read_data import read_data_file
 
