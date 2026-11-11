@@ -7,7 +7,6 @@ from src.product import Product
 # from pprint import pprint
 
 
-
 def get_root():
     loger_script = pathlib.Path(__file__).resolve()
     project_root = next(

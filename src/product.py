@@ -1,9 +1,10 @@
 from typing import Any
 
 from src.base_product import BaseProduct
+from src.mixin_log import MixinLog
 
 
-class Product(BaseProduct):
+class Product(BaseProduct, MixinLog):
     """Класс для представления продукта"""
 
     name: str
@@ -16,9 +17,8 @@ class Product(BaseProduct):
         self.description = description
         self.__price = price
         self.quantity = quantity
-
-    def __repr__(self) -> str:
-        return f"Product(name={self.name}, description={self.description}, price={self.__price}, quantity={self.quantity})\n"
+        super().__init__()
+        # print(repr(self))
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n"

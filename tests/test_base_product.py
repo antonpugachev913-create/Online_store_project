@@ -8,7 +8,7 @@ from src.smartphone import Smartphone
 
 def test_announce_obj_raise_error() -> None:
     with pytest.raises(TypeError):
-        _ = BaseProduct()
+        _ = BaseProduct() # type: ignore[abstract]
 
 
 def test_create_right_hierarchy() -> None:
