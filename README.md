@@ -55,6 +55,10 @@ poetry run mypy .
 
 ```read_data.py``` - содержит функцию, считывающую данные о категории из json file и создающая класс Category
 
+```mixin_log.py``` - содержит класс, который выводит объект класса с его параметрами при создании
+
+```base_product.py``` - содержит абстрактный класс для представления всех продуктов
+
 
 
 #### Примеры использования category.py and product.py (каталога магазина)
@@ -129,4 +133,38 @@ from src.read_data import read_data_file
 
 #Считываем данные и создаём список категорий на их основе
 categories = read_data_file()
+```
+
+
+#### Пример использования base_product.py
+```python
+from src.base_product import BaseProduct
+
+# Создаём класс на основе BaseProduct
+
+class Car(BaseProduct):
+    brand: str
+    year: int
+
+   #Если мы не укажем dunder метод __init__ программа упадёт с ошибкой
+    def __init__(self, brand, year):
+        self.brand = brand
+        self.year = year
+
+```
+
+
+#### Пример использования mixin_log.py 
+```python
+from src.smartphone import Smartphone
+from src.product import Product
+
+# Создаём объекта класс Product и получаем дебажный вывод
+car = Product('Kia', 'Red car', 1000000, 200)
+
+# Вывод: Product('Kia', 'Red car', 1000000, 200)
+
+# Миксин автоматически работает и для всех классов-наследников
+phone = Smartphone('Poco X6', 'Big smartphone', 60000, 1000, 100, 'X6', '16 Гб', 'Black')
+# Вывод: Smartphone('Poco X6', 'Big smartphone', 60000, 1000)
 ```

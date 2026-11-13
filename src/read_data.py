@@ -1,10 +1,10 @@
 import json
 import pathlib
 
-# from pprint import pprint
-
 from src.category import Category
 from src.product import Product
+
+# from pprint import pprint
 
 
 def get_root():
@@ -36,5 +36,6 @@ def read_data_file(path=file_path) -> list[Category]:
         inited_category = Category(name, description, list_products)
         categories.append(inited_category)
     return categories
+
 
 # pprint(read_data_file(), indent=4)
